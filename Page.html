@@ -5,6 +5,8 @@
 	<title>Product Inventory Project</title>
 </head>
 <body>
+	<input type="text" id="textbox">
+	<button class="Submit">Send Item To inventory</button>
 <script type="text/javascript">
 	class Inventory {
 		constructor (stock)
@@ -24,11 +26,23 @@
 	 		this.quantity = quantity;
 	 	}
 	}
-	
-	let tacos = new Product(20, 3, 4);
+	console.log()
+	/*let tacos = new Product(20, 3, 4);
 	let inven = new Inventory();
 	inven.addToStock(tacos);
-	console.log(inven.stock[0]);
+	console.log(inven.stock[0]);*/
+	SubmitBtn = document.querySelector(".Submit");
+	SubmitBtn.addEventListener('click', () => {
+		text = document.getElementById("textbox");
+		AddToInventory(text);
+	})
+	let inven = new Inventory();
+	AddToInventory = (string) => {
+	
+	console.log(inven.stock);
+	
+	
+	}
 </script>
 </body>
 </html>
