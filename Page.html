@@ -5,8 +5,12 @@
 	<title>Product Inventory Project</title>
 </head>
 <body>
-	<input type="text" id="textbox">
+	<input type="text" id="NameBox" value="Name">
+	<input type="text" id="PriceBox" value="Price">
+	<input type="text" id="IdBox" value="Id">
+	<input type="text" id="QuantityBox" value="Quantity">
 	<button class="Submit">Send Item To inventory</button>
+	<p id="replace">Type the Product Name in the first box, price in the second (no dollar sign), Id in the third, and quantity in the fourth.</p>
 <script type="text/javascript">
 	class Inventory {
 		constructor (stock)
@@ -18,30 +22,40 @@
 			this.stock.push(item);
 		}
 	}
+		let inven = new Inventory();
 	class Product {
-	 	constructor(price, id, quantity)
+	 	constructor(name, price, id, quantity)
 	 	{
+	 		this.name = name;
 	 		this.price = price;
 	 		this.id = id;
 	 		this.quantity = quantity;
 	 	}
 	}
-	console.log()
 	/*let tacos = new Product(20, 3, 4);
 	let inven = new Inventory();
 	inven.addToStock(tacos);
 	console.log(inven.stock[0]);*/
+
 	SubmitBtn = document.querySelector(".Submit");
 	SubmitBtn.addEventListener('click', () => {
-		text = document.getElementById("textbox");
-		AddToInventory(text);
+		Name = document.getElementById("NameBox").value; 
+		Price = document.getElementById("PriceBox").value; 
+		Id = document.getElementById("IdBox").value; 
+		Quantity = document.getElementById("QuantityBox").value; 
+		AddToInventory(Name, Price, Id, Quantity);
 	})
-	let inven = new Inventory();
-	AddToInventory = (string) => {
-	
-	console.log(inven.stock);
-	
-	
+	AddToInventory = (name, price, id, quantity) => {
+	if(inven.stock.length === 0) 
+		{ document.getElementById("replace").innerHTML = ""; }
+	let newProduct = new Product(name, price, id, quantity); // Make a new product, add it to the inventory
+		inven.addToStock(newProduct); 
+		let int = inven.stock.length;
+		console.log(int);
+		let latestProduct = inven.stock[int - 1];
+		console.log(latestProduct);
+		let Text = `${latestProduct.name}: $${price}, Id:${id}, A quantity of: ${quantity} <br>`;
+		document.getElementById("replace").innerHTML += Text;
 	}
 </script>
 </body>
