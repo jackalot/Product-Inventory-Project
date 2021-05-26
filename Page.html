@@ -2,9 +2,33 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Product Inventory Project</title>
 </head>
 <body>
-
+<script type="text/javascript">
+	class Inventory {
+		constructor (stock)
+		{
+			this.stock = [];
+		}
+		addToStock (item)
+		{
+			this.stock.push(item);
+		}
+	}
+	class Product {
+	 	constructor(price, id, quantity)
+	 	{
+	 		this.price = price;
+	 		this.id = id;
+	 		this.quantity = quantity;
+	 	}
+	}
+	
+	let tacos = new Product(20, 3, 4);
+	let inven = new Inventory();
+	inven.addToStock(tacos);
+	console.log(inven.stock[0]);
+</script>
 </body>
 </html>
